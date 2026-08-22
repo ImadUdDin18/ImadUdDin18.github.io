@@ -3,9 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Imad Ud Din — Trainee DevOps Engineer',
-  description: 'AWS, Docker, Terraform, Kubernetes and CI/CD projects by Imad Ud Din.',
-  generator: 'v0.app',
+  title: 'Imad Ud Din | DevOps Engineer',
+  description: 'Portfolio of Imad Ud Din, a DevOps engineer building reliable cloud infrastructure, automation, and deployment workflows.',
 }
 
 export const viewport: Viewport = {
