@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 
 const projects = [
-  { title: 'AWS Auto Backup with Alerts', tag: 'AWS · Lambda · S3', text: 'Daily automated backups with CloudWatch monitoring and alerting.' },
-  { title: 'Cloud Resume Challenge', tag: 'AWS · Terraform · CI/CD', text: 'A production-style cloud portfolio built to learn by shipping.' },
-  { title: 'Pet Store DevOps', tag: 'Docker · Nginx · AWS', text: 'A containerized multi-service application with an automated deployment pipeline.' },
-  { title: 'TaskFlow', tag: 'Flask · SQLite · UI', text: 'A focused full-stack task management experience.' },
+  { title: 'AWS Auto Backup', tag: 'AWS · LAMBDA · S3', text: 'Automated backup workflow with monitoring and alerts.' },
+  { title: 'Cloud Resume Challenge', tag: 'AWS · TERRAFORM · CI/CD', text: 'A production-style cloud portfolio built by shipping real infrastructure.' },
+  { title: 'Pet Store DevOps', tag: 'DOCKER · NGINX · AWS', text: 'Containerized services with an automated deployment pipeline.' },
+  { title: 'TaskFlow', tag: 'FLASK · SQLITE · UI', text: 'A focused full-stack task management experience.' },
 ]
 
 export default function Page() {
@@ -16,9 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault(); setTerminal(true)
-      }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); setTerminal(true) }
       if (event.key === 'Escape') setTerminal(false)
     }
     window.addEventListener('keydown', onKey)
@@ -27,35 +25,36 @@ export default function Page() {
 
   return (
     <main className={infra ? 'site infra-mode' : 'site'}>
-      <nav className="nav">
+      <a className="skip" href="#content">Skip to content</a>
+      <header className="nav">
         <a className="brand" href="#top"><span className="brand-mark">&gt;_</span> IMAD UD DIN</a>
         <button className="menu-button" onClick={() => setMenu(!menu)} aria-label="Toggle navigation">MENU</button>
-        <div className={menu ? 'nav-links open' : 'nav-links'}>
-          <a href="#work" onClick={() => setMenu(false)}>WORK</a>
-          <a href="#stack" onClick={() => setMenu(false)}>STACK</a>
-          <a href="#about" onClick={() => setMenu(false)}>ABOUT</a>
-          <a href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">GITHUB ↗</a>
-        </div>
-        <button className="infra-toggle" onClick={() => setInfra(!infra)}><span className="pulse" /> {infra ? 'INFRA: ON' : 'INFRA MODE'}</button>
-      </nav>
+        <nav className={menu ? 'nav-links open' : 'nav-links'} aria-label="Primary">
+          {['Home', 'About', 'Education', 'Skills', 'Projects', 'Experience', 'Services', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenu(false)}>{item}</a>)}
+        </nav>
+        <button className="infra-toggle" onClick={() => setInfra(!infra)}><span className="pulse" /> {infra ? 'INFRA: ON' : 'OPEN TO WORK'}</button>
+      </header>
 
-      <section className="hero" id="top">
-        <div className="eyebrow">TRAINEE DEVOPS ENGINEER <span>///</span> PAKISTAN</div>
-        <h1>BUILDING<br /><em>RELIABLE</em><br />SYSTEMS.</h1>
-        <div className="hero-bottom"><p>I turn infrastructure into an advantage.<br />AWS, containers, automation, and a bias<br />for shipping things that work.</p><a className="arrow-link" href="#work">EXPLORE MY WORK <span>↓</span></a></div>
-        <div className="hero-code" aria-hidden="true">{`{\n  "status": "shipping",\n  "focus": ["cloud", "automation"],\n  "location": "PK"\n}`}</div>
-      </section>
+      <div id="content">
+        <section className="hero" id="top">
+          <div className="hero-copy">
+            <div className="eyebrow">CLOUD INFRASTRUCTURE &amp; AUTOMATION</div>
+            <h1>Hi, I&apos;m <em>Imad Ud Din</em></h1>
+            <p className="role">I engineer as a <strong>DevOps Engineer</strong></p>
+            <p className="intro">Trainee DevOps Engineer specializing in AWS, Docker, Terraform, Kubernetes, Linux, and CI/CD. I build reliable infrastructure and practical systems for ambitious products.</p>
+            <div className="actions"><a className="primary-button" href="#projects">Explore My Work ↗</a><a className="secondary-button" href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">GitHub ↗</a><a className="secondary-button" href="#contact">Contact Me</a></div>
+            <ul className="highlights"><li>Cloud Ready</li><li>Automation First</li><li>Reliable Systems</li></ul>
+          </div>
+          <div className="hero-visual"><div className="avatar-ring"><img src="https://github.com/ImadUdDin18.png?size=480" alt="Imad Ud Din GitHub profile" /></div><div className="float-card performance"><b>Performance</b><span>Automated workflows</span></div><div className="float-card secure"><b>Cloud Native</b><span>AWS · Docker · IaC</span></div><div className="code-card"><div className="code-top"><i /> <i /> <i /><span>deploy.yml</span></div><pre>{`name: ship-it\non: push\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps: [build, test, deploy]`}</pre></div></div>
+        </section>
 
-      <section className="ticker" aria-label="Skills"><span>AWS</span><span>DOCKER</span><span>TERRAFORM</span><span>KUBERNETES</span><span>CI/CD</span><span>LINUX</span></section>
+        <section className="about section" id="about"><div className="section-heading"><div><div className="section-label">GET TO KNOW ME</div><h2>Engineering Systems That <em>Deliver.</em></h2></div><p>Clean infrastructure, repeatable automation, and products that solve real problems.</p></div><div className="about-grid"><div className="about-facts"><div><span>Name</span><b>Imad Ud Din</b></div><div><span>Education</span><b>Software Engineering</b></div><div><span>Profession</span><b>Trainee DevOps Engineer</b></div><div><span>Location</span><b>Pakistan</b></div></div><p className="large-copy">I focus on making software delivery faster, safer, and less dramatic through cloud infrastructure, automation, and continuous learning.</p></div></section>
+        <section className="section" id="projects"><div className="section-label">SELECTED WORK</div><h2>Things I&apos;ve <em>Shipped.</em></h2><div className="project-grid">{projects.map((project, index) => <article className="project" key={project.title}><span className="project-number">0{index + 1}</span><div><span className="project-tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><a href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">VIEW REPO ↗</a></div></article>)}</div></section>
+        <section className="section skills" id="skills"><div className="section-label">TOOLS I USE</div><h2>My <em>Stack.</em></h2><div className="stack-list">{['AWS Cloud', 'Docker & Containers', 'Terraform & IaC', 'Kubernetes', 'GitHub Actions CI/CD', 'Linux & Bash'].map((item, i) => <div className="stack-row" key={item}><span>0{i + 1}</span><strong>{item}</strong><i>↗</i></div>)}</div></section>
+        <section className="contact section" id="contact"><div className="section-label">LET&apos;S CONNECT</div><h2>Build Something <em>Reliable.</em></h2><a className="primary-button" href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">Start a Conversation ↗</a></section>
+      </div>
 
-      <section className="section work" id="work"><div className="section-label">01 / SELECTED WORK</div><div className="section-heading"><h2>THINGS I&apos;VE<br /><em>SHIPPED.</em></h2><p>Small projects, real infrastructure, and plenty of lessons learned the hard way.</p></div><div className="project-grid">{projects.map((project, index) => <article className="project" key={project.title}><span className="project-number">0{index + 1}</span><div><span className="project-tag">{project.tag}</span><h3>{project.title}</h3><p>{project.text}</p><a href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">VIEW REPO ↗</a></div></article>)}</div></section>
-
-      <section className="section stack" id="stack"><div className="section-label">02 / THE TOOLBOX</div><div className="stack-layout"><h2>THE<br /><em>STACK.</em></h2><div className="stack-list">{['Cloud / AWS', 'Containers / Docker', 'IaC / Terraform', 'Orchestration / Kubernetes', 'Pipelines / GitHub Actions', 'OS / Linux'].map((item, i) => <div className="stack-row" key={item}><span>0{i + 1}</span><strong>{item}</strong><i>↗</i></div>)}</div></div></section>
-
-      <section className="section about" id="about"><div className="section-label">03 / A LITTLE ABOUT ME</div><div className="about-layout"><h2>CURIOUS BY<br /><em>DEFAULT.</em></h2><div><p className="large-copy">I&apos;m Imad — a trainee DevOps engineer learning how to make software delivery faster, safer, and less dramatic.</p><p>When I&apos;m not breaking a Terraform plan, I&apos;m building with AWS, exploring Kubernetes, or finding a cleaner way to automate the boring stuff.</p><a className="text-link" href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">MORE ON GITHUB ↗</a></div></div></section>
-
-      <footer className="footer"><div><span className="eyebrow">HAVE A SYSTEM TO BUILD?</span><h2>LET&apos;S MAKE<br /><em>IT SOLID.</em></h2></div><a className="contact-button" href="https://github.com/ImadUdDin18" target="_blank" rel="noreferrer">START A CONVERSATION ↗</a><div className="footer-bottom"><span>© 2026 IMAD UD DIN</span><span>BUILT WITH INTENT ///</span><button onClick={() => setTerminal(true)}>CTRL + K TERMINAL</button></div></footer>
-
+      <footer className="footer"><span>© 2026 IMAD UD DIN</span><span>BUILT WITH INTENT ///</span><button onClick={() => setTerminal(true)}>CTRL + K TERMINAL</button></footer>
       {terminal && <div className="terminal-backdrop" onClick={() => setTerminal(false)}><div className="terminal" onClick={(e) => e.stopPropagation()}><div className="terminal-bar"><span>imad@cloud:~</span><button onClick={() => setTerminal(false)}>×</button></div><p><b>$</b> whoami</p><p className="green">imad — trainee devops engineer</p><p><b>$</b> cat mission.txt</p><p className="muted">make infrastructure boring, repeatable, and reliable.</p><p><b>$</b> <span className="cursor">▋</span></p></div></div>}
     </main>
   )
