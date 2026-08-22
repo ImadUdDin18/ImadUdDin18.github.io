@@ -1,4 +1,4 @@
-# Imad Ud Din — DevOps Portfolio
+# Imad Ud Din — DevOps Engineer Portfolio
 
 A personal portfolio website for **Imad Ud Din**, showcasing cloud infrastructure, DevOps automation, containerization, CI/CD, and selected GitHub projects.
 
@@ -39,4 +39,4 @@ pnpm start
 
 - GitHub: [github.com/ImadUdDin18](https://github.com/ImadUdDin18)
 
-Built as Imad Ud Din's personal professional portfolio.
+Created as Imad Ud Din&apos;s personal professional portfolio.
